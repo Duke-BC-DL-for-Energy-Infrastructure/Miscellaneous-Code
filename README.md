@@ -22,4 +22,9 @@ This file is used to take the labels from the Baseline dataset (real overhead im
 
 The first code block is to generate a histogram of wind turbine ground truth areas and see how many of them fall below a specified threshold. The second code block is to pull up a specified sample image and print out the box areas for the wind turbines in the image to get a sense of these values with the wind turbines in the actual images. The third code block is then to create new labels that include small and large wind turbines as separate classes by comparing the box area for each wind turbine with the chosen threshold.
 
-<img src="figures/histogram_of_bounding_box_areas.png" width="300">
+<img src="figures/histogram_of_bounding_box_areas.png" width="400">
+
+### tiles.geojson
+This is a [geojson file](https://en.wikipedia.org/wiki/GeoJSON) containing locations and other information about all of the real overhead wind turbines images that were collected from the Power Plant Satellite Imagery Dataset. To view a map of these locations, download this file and go to [geojson.io](https://geojson.io/). Then you can drag and drop this file directly onto the map.
+
+<img src="figures/map_of_wnd_image_locations.PNG" width="500">
