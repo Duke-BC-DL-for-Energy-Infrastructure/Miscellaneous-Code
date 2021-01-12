@@ -10,6 +10,9 @@ This file uses the precision.txt and recall.txt files generated from training ru
 ### wtb_dataset_EDA.py
 This file is used to generate a histogram of the number of images per state. As input, this takes a directory that contains .jpg images, where the image names are in a format similar to naip_325_AZ_WND_..., where they contain the information of the state that the image is from. To use on your own directory, change the DATA_DIR on line 17.
 
+### wtb_dataset.py
+This file is used to retrieve the images of a certain powerplant type from the 530764 file in the [Power Plant Satellite Imagery Dataset](https://figshare.com/articles/Power_Plant_Satellite_Imagery_Dataset/5307364) and convert it into a form that can be annotated, adding a mask that shows the location of the power plant so that the images can be labeled faster. These masks are also in the Power Plant Satellite Imagery Dataset, and were were collected through Amazon Mechanical Turk. DATA_DIR is the path to the 530764 directory, and SAVE_DIR is the path to the directory where you want the images saved.
+
 ### Changing_Labels_to_Large_and_Small_Wind_Turbines.ipynb
 This file is used to take the labels from the Baseline dataset (real overhead images) from Duke Box, and then create new labels by altering the class value for each wind turbine in each label to be '0' for large turbines and '1' for small turbines. It does this using a threshold value, and altering the '0' class value to a '1' if the area of the current ground truth box is smaller than the threshold.
 
