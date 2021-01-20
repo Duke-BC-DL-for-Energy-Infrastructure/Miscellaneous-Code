@@ -80,5 +80,5 @@ def pr_curve_comparison(*args):
     
     
 if __name__ == '__main__':
-    pr_curve('precision.txt', 'recall.txt')
-    pr_curve_comparison(['precision_1.txt', 'recall_1.txt', 'label_1'], ['precision_2.txt', 'recall_2.txt', 'label_2'])
+    #pr_curve('precision.txt', 'recall.txt')
+    pr_curve_comparison(['precision.txt', 'recall.txt', 'Baseline Dataset'], ['precision(1).txt', 'recall(1).txt', 'Adding Synthetic'])
