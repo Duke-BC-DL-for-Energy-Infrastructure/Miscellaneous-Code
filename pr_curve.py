@@ -78,7 +78,41 @@ def pr_curve_comparison(*args):
     fig.savefig('PR_curve.png', dpi=300)
     plt.show()
     
-    
+
+def metrics(precision_file, recall_file):
+    """ Finds max f1, max precision, and max recall using precision and recall .txt files
+
+    Parameters
+    ----------
+    precision_file : string
+        Path to .txt file containing precision values (e.g. 'precision.txt')
+    recall_file : string
+        Path to .txt file containing recall values (e.g. 'recall.txt')
+        
+    """
+
+    max_p = 0
+    max_r = 0
+    max_f1 = 0
+
+    precision_f = open(precision_file, 'r')
+    recall_f = open(recall_file, 'r')
+
+    lines = precision_f.read().split('\n')[:-1]
+    precision = [float(line.strip('[]')) for line in lines]
+
+    lines = recall_f.read().split('\n')[:-1]
+    recall = [float(line.strip('[]')) for line in lines]
+
+    for i in range(len(precision)):
+        max_p = max(max_p, precision[i])
+        max_r = max(max_r, recall[i])
+        max_f1 = max(max_f1, (2*precision[i]*recall[i]) / (precision[i]+recall[i]))
+
+    print(f'Max Precision: {max_p} \n Max Recall: {max_r} \n Max F1: {max_f1}')
+
+
 if __name__ == '__main__':
     #pr_curve('precision.txt', 'recall.txt')
+    #metrics('precision.txt', 'recall.txt')
     pr_curve_comparison(['precision.txt', 'recall.txt', 'Baseline Dataset'], ['precision(1).txt', 'recall(1).txt', 'Adding Synthetic'])
