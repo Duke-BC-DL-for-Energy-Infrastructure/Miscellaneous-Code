@@ -20,19 +20,24 @@ regions = {'SW' : ['CA', 'AZ', 'TX', 'NM', 'NV', 'UT', 'CO'],
               'EM': ['MI', 'MN', 'MO', 'WI', 'IN', 'IA', 'IL', 'OH'],
               'WM': ['ND', 'OK', 'KS', 'SD', 'NE']}
 
-IMG_DIR = r'C:\Users\Tyler Feldman\Box\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Splitting Images into Categories\\'
+# Directories for images, labels, and synthetic images
+IMG_DIR = r'C:\Users\Tyler Feldman\Box\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Splitting Images into Categories\\images\\'
 LBL_DIR = r'C:\Users\Tyler Feldman\Box\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Multiclass Data\labels\\'
 SYN_DIR = r'C:\Users\Tyler Feldman\Box\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Synthetic Imagery\synthetic_images\\'
 
-training_paths = [path for path in glob.glob(IMG_DIR + 'images\\*.jpg') if get_state(path) in regions['NW']]
-validation_paths = [path for path in glob.glob(IMG_DIR + 'images\\*.jpg') if get_state(path) in regions['NE']]
+# Paths for regional cross domain experiment
+training_paths = [path for path in glob.glob(IMG_DIR + '*.jpg') if get_state(path) in regions['NW']]
+validation_paths = [path for path in glob.glob(IMG_DIR + '*.jpg') if get_state(path) in regions['NE']]
 synthetic_paths = glob.glob(SYN_DIR + '*forests.png')
 
+# Paths for categorical cross domain experiment
 #training_paths = glob.glob(r'C:\Users\Tyler Feldman\Box\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Splitting Images into Categories\deserts\*.jpg')
 #validation_paths = glob.glob(r'C:\Users\Tyler Feldman\Box\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Splitting Images into Categories\farmlands\*.jpg')
 #synthetic_paths = glob.glob(r'C:\Users\Tyler Feldman\Box\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Synthetic Imagery\synthetic_images\farm*.png')
+
 separator = '\\' # Character used to separate directories in the paths that come from calling glob
 
+# Shuffle paths and write paths to .txt files
 random.shuffle(training_paths)
 random.shuffle(validation_paths)
 random.shuffle(synthetic_paths)
