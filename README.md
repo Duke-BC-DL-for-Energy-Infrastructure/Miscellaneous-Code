@@ -7,7 +7,12 @@ This repo is meant to contain a variety of indpendent helper code that makes fig
 ### pr_curve.py
 This file uses the precision.txt and recall.txt files generated from training runs and creates/saves Precision-Recall curves using that data. It can take any number of pairs of data for precision and recall to create multiple PR curves on the same figure. To run this on your own files, make sure the main function at the bottom has the correct paths and is using the function you want.
 
+Given the same precision.txt and recall.txt files, you can use the metrics() function to retrieve the max precision, max recall, and max f1 of the model.
+
 <img src="figures/PR_curve.png" width="300">
+
+### category_and_region_EDA.py
+This file can be used to retrieve information about the number of images, number of turbines (including small and large), and the average number of turbines per image for each region (Southwest, Northeast, Northwest, Eastern Midwest, Western Midwest) and for each category (deserts, farmlands, grasslands, forests, urban/suburban, water). To use this on your own, it's easiest to sync Duke Box onto your computer and then change the IMG_DIR and LBL_DIR to your specific file paths.
 
 ### wtb_dataset_EDA.py
 This file is used to generate a histogram of the number of images per state. As input, this takes a directory that contains .jpg images, where the image names are in a format similar to naip_325_AZ_WND_..., where they contain the information of the state that the image is from. To use on your own directory, change the DATA_DIR on line 17.
