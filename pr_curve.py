@@ -109,10 +109,11 @@ def metrics(precision_file, recall_file):
         max_r = max(max_r, recall[i])
         max_f1 = max(max_f1, (2*precision[i]*recall[i]) / (precision[i]+recall[i]))
 
-    print(f'Max Precision: {max_p} \n Max Recall: {max_r} \n Max F1: {max_f1}')
+    print(f'For {precision_file} and {recall_file},\nMax Precision: {max_p} \nMax Recall: {max_r} \nMax F1: {max_f1}')
 
 
 if __name__ == '__main__':
     #pr_curve('precision.txt', 'recall.txt')
-    #metrics('precision.txt', 'recall.txt')
+    metrics('precision.txt', 'recall.txt')
+    metrics('precision(1).txt', 'recall(1).txt')
     pr_curve_comparison(['precision.txt', 'recall.txt', 'Baseline Dataset'], ['precision(1).txt', 'recall(1).txt', 'Adding Synthetic'])
