@@ -7,9 +7,30 @@ Created on Fri Jan 22 17:14:56 2021
 import random
 import glob
 
-training_paths = glob.glob(r'C:\Users\Tyler Feldman\Box\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Splitting Images into Categories\deserts\*.jpg')
-validation_paths = glob.glob(r'C:\Users\Tyler Feldman\Box\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Splitting Images into Categories\farmlands\*.jpg')
-synthetic_paths = glob.glob(r'C:\Users\Tyler Feldman\Box\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Synthetic Imagery\synthetic_images\farm*.png')
+def get_file_name(path):
+    return path.split('\\')[-1]
+
+def get_state(path):
+    return path.split('\\')[-1].split('_')[2]
+
+categories = ['deserts', 'farmlands', 'forests', 'grasslands', 'urban_suburban', 'water']
+regions = {'SW' : ['CA', 'AZ', 'TX', 'NM', 'NV', 'UT', 'CO'], 
+              'NE': ['VT', 'MD', 'ME', 'NH', 'PA', 'NJ', 'NY', 'MA', 'DE'],
+              'NW': ['WA', 'ID', 'OR', 'MT'],
+              'EM': ['MI', 'MN', 'MO', 'WI', 'IN', 'IA', 'IL', 'OH'],
+              'WM': ['ND', 'OK', 'KS', 'SD', 'NE']}
+
+IMG_DIR = r'C:\Users\Tyler Feldman\Box\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Splitting Images into Categories\\'
+LBL_DIR = r'C:\Users\Tyler Feldman\Box\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Multiclass Data\labels\\'
+SYN_DIR = r'C:\Users\Tyler Feldman\Box\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Synthetic Imagery\synthetic_images\\'
+
+training_paths = [path for path in glob.glob(IMG_DIR + 'images\\*.jpg') if get_state(path) in regions['NW']]
+validation_paths = [path for path in glob.glob(IMG_DIR + 'images\\*.jpg') if get_state(path) in regions['NE']]
+synthetic_paths = glob.glob(SYN_DIR + '*forests.png')
+
+#training_paths = glob.glob(r'C:\Users\Tyler Feldman\Box\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Splitting Images into Categories\deserts\*.jpg')
+#validation_paths = glob.glob(r'C:\Users\Tyler Feldman\Box\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Splitting Images into Categories\farmlands\*.jpg')
+#synthetic_paths = glob.glob(r'C:\Users\Tyler Feldman\Box\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Synthetic Imagery\synthetic_images\farm*.png')
 separator = '\\' # Character used to separate directories in the paths that come from calling glob
 
 random.shuffle(training_paths)
