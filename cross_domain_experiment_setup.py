@@ -10,8 +10,8 @@ training_lbl_txt_filename = 'training_lbl_paths.txt'
 validation_img_txt_filename = 'val_img_paths.txt'
 validation_lbl_txt_filename = 'val_lbl_paths.txt'
 
-baseline_data_filename = 'wnd_px10_seed17.DATA'
-adding_synthetic_data_filename = 'wnd_syn_real_seed17.DATA'
+baseline_data_filename = 'wnd_px10_seed17.data'
+adding_synthetic_data_filename = 'wnd_syn_real_seed17.data'
 
 baseline_folder_name = 'baseline'
 adding_synthetic_folder_name = 'adding_synthetic'
@@ -30,6 +30,9 @@ EM_syn = glob.glob(r'C:\Users\Student\Box Sync\Bass Connections 2020-2021\Wind T
 NE_syn = glob.glob(r'C:\Users\Student\Box Sync\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Synthetic Imagery\New Distribution\NE\color_all_images_step608\*.png')
 NW_syn = glob.glob(r'C:\Users\Student\Box Sync\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Synthetic Imagery\New Distribution\NW\color_all_images_step608\*.png')
 
+NE_background = glob.glob(r'C:\Users\Student\Box Sync\Bass Connections 2020-2021\background images\no_wind\forests\*.png')
+NE_new_background = glob.glob(r'C:\Users\Student\Box Sync\Bass Connections 2020-2021\background images\no_wind_regional\NE\*.jpg')
+
 random.shuffle(EM)
 random.shuffle(NE)
 random.shuffle(NW)
@@ -44,10 +47,6 @@ ratios = [[264, 200], [100, 100]] # In format [[# real, # syn], [# real, # syn],
 pairs = [[EM, NW], [EM, NE], [NW, NE], [NW, EM], [NE, NW], [NE, EM]]
 pairs_names = [['EM', 'NW'], ['EM', 'NE'], ['NW', 'NE'], ['NW', 'EM'], ['NE', 'NW'], ['NE', 'EM']]
 syn_data = [NW_syn, NE_syn, NE_syn, EM_syn, NW_syn, EM_syn]
-
-
-
-# Shuffle paths and write paths to .txt files
 
 for ratio in ratios:
     for i in range(len(pairs)):
