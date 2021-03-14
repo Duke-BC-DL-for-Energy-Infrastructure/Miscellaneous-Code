@@ -87,7 +87,7 @@ for ratio in ratios:
         if not os.path.exists(adding_synthetic_folder):
             os.mkdir(adding_synthetic_folder)
 
-        # Create .DATA file for baseline folder
+        # Create .data file for baseline folder
         with open(os.path.join(baseline_folder, baseline_data_filename), 'w') as baseline_data:
             baseline_data.write(f'train={baseline_folder_name}/{training_img_txt_filename}\n')
             baseline_data.write(f'train_label={baseline_folder_name}/{training_lbl_txt_filename}\n')
@@ -98,7 +98,7 @@ for ratio in ratios:
             baseline_data.write('backup=backup/\n')
             baseline_data.write('eval=wnd')
 
-        # Create .DATA file for adding synthetic folder
+        # Create .data file for adding synthetic folder
         with open(os.path.join(adding_synthetic_folder, adding_synthetic_data_filename), 'w') as adding_synthetic_data:
             adding_synthetic_data.write(f'train={adding_synthetic_folder_name}/{training_img_txt_filename}\n')
             adding_synthetic_data.write(f'train_label={adding_synthetic_folder_name}/{training_lbl_txt_filename}\n')
@@ -109,11 +109,11 @@ for ratio in ratios:
             adding_synthetic_data.write('backup=backup/\n')
             adding_synthetic_data.write('eval=wnd')
 
-        # Create .NAMES file for baseline folder
+        # Create .names file for baseline folder
         with open(os.path.join(baseline_folder, 'wnd.names'), 'w') as baseline_names:
             baseline_names.write('Wind-Turbine')
 
-        # Create .NAMES file for adding synthetic folder
+        # Create .names file for adding synthetic folder
         with open(os.path.join(adding_synthetic_folder, 'wnd.names'), 'w') as adding_synthetic_names:
             adding_synthetic_names.write('Wind-Turbine')
 
