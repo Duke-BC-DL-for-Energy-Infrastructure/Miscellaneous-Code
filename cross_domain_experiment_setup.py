@@ -6,8 +6,9 @@ import os
 '''
 This file creates .txt files, .data files, .names files and directories for a cross domain experiment
 Inputs:
-    The inputs are labeled with 'INPUT:', which include the paths for the images in each region and the
-    specific pairs of regions, and ratios of real to synthetic.
+    The inputs are labeled with 'INPUT:', which include the paths for the real and synthetic images in each region as well
+    as the names, training and validation real images, ratios/counts of real to synthetic images, and synthetic data used 
+    for each experiment.
 
 Outputs:
     Creates directories and files inside the OUTPUT_DIR. Inside OUTPUT_DIR, it creates a folder for each experiment,
@@ -16,6 +17,8 @@ Outputs:
     validation label paths, names file, and .data file which is used as the actual input to the YOLOv3 train.py script.
 
 '''
+
+separator = '\\' # The type of character used on your system to separate directories in paths
 
 # INPUT:
 # Directory where the program will output all of the files
@@ -43,11 +46,10 @@ random.shuffle(NW_syn)
 
 # INPUT:
 # Provide pairs of regions, synthetic data used for each experiment, and ratios of real and synthetic images
-ratios = [[264, 200], [100, 100]] # In format [[# real, # syn], [# real, # syn], ...]
-pairs = [[EM, NW], [EM, NE], [NW, NE], [NW, EM], [NE, NW], [NE, EM]] # Pairs of regions for each experiment
-pairs_names = [['EM', 'NW'], ['EM', 'NE'], ['NW', 'NE'], ['NW', 'EM'], ['NE', 'NW'], ['NE', 'EM']] # Pairs of regions for each experiment
-syn_data = [NW_syn, NE_syn, NE_syn, EM_syn, NW_syn, EM_syn] # Synthetic images for each experiment
-
+ratios = [[264, 200], [100, 100]] # In format [[# real, # syn], ...]
+pairs = [[EM, NW], [EM, NE], [NW, NE], [NW, EM], [NE, NW], [NE, EM]] # Pairs of regions for each experiment. In format [[training_paths, validation_paths], ...]
+pairs_names = [['EM', 'NW'], ['EM', 'NE'], ['NW', 'NE'], ['NW', 'EM'], ['NE', 'NW'], ['NE', 'EM']] # Pairs of regions for each experiment, but in string format
+syn_data = [NW_syn, NE_syn, NE_syn, EM_syn, NW_syn, EM_syn] # Synthetic images for each experiment. As we are doing it now, this should match up with the validation region
 
 # NAMING CONFIGURATIONS:
 # Names of the .txt files
