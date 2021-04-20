@@ -14,11 +14,7 @@ regions = {'SW' : ['CA', 'AZ', 'TX', 'NM', 'NV', 'UT', 'CO'],
               'NE': ['VT', 'MD', 'ME', 'NH', 'PA', 'NJ', 'NY', 'MA', 'DE'],
               'NW': ['WA', 'ID', 'OR', 'MT'],
               'EM': ['MI', 'MN', 'MO', 'WI', 'IN', 'IA', 'IL', 'OH'],
-              'WM': ['ND', 'OK', 'KS', 'SD', 'NE'],
-              'ALL': ['CA', 'AZ', 'TX', 'NM', 'NV', 'UT', 'CO', 
-                        'VT', 'MD', 'ME', 'NH', 'PA', 'NJ', 'NY', 'MA', 'DE',
-                        'WA', 'ID', 'OR', 'MT', 'MI', 'MN', 'MO', 'WI', 'IN', 'IA', 'IL', 'OH',
-                        'ND', 'OK', 'KS', 'SD', 'NE']}
+              'WM': ['ND', 'OK', 'KS', 'SD', 'NE']}
 
 # INPUT: 
 target_region = 'ALL' # Which region to get lat/lon info on
@@ -34,7 +30,7 @@ image_paths = EM_image_paths + NE_image_paths + NW_image_paths + SW_image_paths 
 
 # Get just the naip image names. This is because the geojson file only has info on the original naip images (the ones that have "naip" in the file name)
 image_names = [path.split(separator)[-1].split('.')[0] for path in image_paths if path.split(separator)[-1].split('.')[0].split('_')[0] == 'naip'] 
-image_names = [img for img in image_names if (get_region(img) == target_region)] # Collect the images that are within the target region
+image_names = [img for img in image_names if (get_region(img) == target_region or target_region == 'ALL')] # Collect the images that are within the target region
 
 parent_image_coordinates = {}
 
