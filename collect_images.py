@@ -2,13 +2,19 @@ import glob
 import os
 import shutil
 
-# This file will only work on the original naip images (that have "naip" in the name)
+'''
+This file takes a directory of images or labels and copies the images in a certain geographic region into the output directory.
+These images must be named with the format naip_####_STATE_WND_i#j#.extension.
+For example, an image might be named naip_6882_PA_i1j0.jpg and it's corresponding label would be named naip_6882_PA_i1j0.txt.
+If the target region is set to 'NE' and extension set to '.jpg, then if this example image (naip_6882_PA_i1j0.jpg) is in the IMG_DIR,
+then it will be copied into the OUTPUT_DIR, since is from PA, and PA is in the NE region.
+'''
 
 # Directory of where the input images are
-IMG_DIR = r'C:\Users\sarah\Box Sync\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Data\images'
+IMG_DIR = r'C:\Users\tyler\Box Sync\Bass Connections 2020-2021\Wind Turbine Object Detection Dataset\Data\images'
 
 # Directory of where to copy the target images to
-OUTPUT_DIR = r'C:\Users\sarah\Documents\TYLER\Bass\Files\images'
+OUTPUT_DIR = r'C:\Users\tyler\Documents\Bass\Files\images'
 
 target_region = 'ALL' # Target region to filter the images by. For example, if you only want to collect images from NE, then use target_region ='NE
 extension = '.jpg' # Could change to .txt for labels
