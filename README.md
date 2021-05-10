@@ -10,7 +10,7 @@ This file takes the path for an image and its YOLOv3 formatted label and display
 ### synthetic_labels_to_bbox_areas.py
 Given a directory full of YOLOv3 formatted labels, returns a dictionary where the keys are the absolute path of the label and value is a list of the areas of the bounding boxes in that label. Can be written into a .csv or .txt file and then used to create uniform bins that approximate this distribution, which can then be used in CityEngine for the size distribution of the synthetic imagery.
 
-### collect_images.py
+### copy_naip_images_from_a_region.py
 Given an input directory, a target region, and an output directory, copy the target files into the output directory. Can be used for either labels or images depending on what you set the extension variable to ('.txt' for labels and 'jpg' for images). The script looks at all of the files in the input directory that have the right extension, takes those that are naip files (have "naip" at the beginning of the name), and takes those that are in the target region. Finally these files are copied into the output directory.
 
 ### pr_curve.py
