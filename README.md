@@ -4,6 +4,15 @@
 This repo is meant to contain a variety of indpendent helper code that makes figures, manages data, and so on.
 
 ## File Descriptions
+### display_bbox.py
+This file takes the path for an image and its YOLOv3 formatted label and displays the bounding boxes on top of the image.
+
+### synthetic_labels_to_bbox_areas.py
+Given a directory full of YOLOv3 formatted labels, returns a dictionary where the keys are the absolute path of the label and value is a list of the areas of the bounding boxes in that label. Can be written into a .csv or .txt file and then used to create uniform bins that approximate this distribution, which can then be used in CityEngine for the size distribution of the synthetic imagery.
+
+### copy_naip_images_from_a_region.py
+Given an input directory, a target region, and an output directory, copy the target files into the output directory. Can be used for either labels or images depending on what you set the extension variable to ('.txt' for labels and 'jpg' for images). The script looks at all of the files in the input directory that have the right extension, takes those that are naip files (have "naip" at the beginning of the name), and takes those that are in the target region. Finally these files are copied into the output directory.
+
 ### pr_curve.py
 This file uses the precision.txt and recall.txt files generated from training runs and creates/saves Precision-Recall curves using that data. It can take any number of pairs of data for precision and recall to create multiple PR curves on the same figure. To run this on your own files, make sure the main function at the bottom has the correct paths and is using the function you want.
 
@@ -33,3 +42,6 @@ The first code block is to generate a histogram of wind turbine ground truth are
 This is a [geojson file](https://en.wikipedia.org/wiki/GeoJSON) containing locations and other information about all of the real overhead wind turbines images that were collected from the Power Plant Satellite Imagery Dataset. To view a map of these locations, download this file and go to [geojson.io](https://geojson.io/). Then you can drag and drop this file directly onto the map.
 
 <img src="figures/map_of_wnd_image_locations.PNG" width="500">
+
+### parse_geojson.py
+This file parses the geojson file to create a csv with three columns: name of the image, longitude, and lattitude of where the image was collected. It assumes that the script itself and the geojson file are in the same directory. The inputs that are needed to change are the path for the images that glob uses, and possibly the path to the tiles.geojson file. Other changes that might be useful is editing the target region that is wanted.
